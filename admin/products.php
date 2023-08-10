@@ -1,0 +1,63 @@
+<?php
+include('../middleware/adminMiddleware.php');
+include('includes/header.php');
+?>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Products</h4>
+                </div>
+                <div class="card-body" id="products_table">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Image</th>
+                                <th>Price</th>
+                                <th>Selling Price</th>
+                                <th>Brand</th>
+                                <th>Status</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $products = getAll("product");
+                            // $query = "SELECT * FROM categories";
+                            // $res = mysqli_query($con, $query);
+                            if (mysqli_num_rows($products) > 0) {
+                                foreach ($products as $item) {
+                            ?>
+                                    <tr>
+                                        <td><?= $item['p_title']; ?></td>
+                                        <td><img src="../uploads/<?= $item['p_image']; ?>" width="50px" height="50px" alt="<?= $item['p_title']; ?>"></td>
+                                        <td><?= $item['p_price'] . '$'; ?></td>
+                                        <td><?= $item['p_discount_price'] . '$' ?></td>
+                                        <td><?= $item['p_brand'] ?></td>
+                                        <td><?= $item['p_status'] == '0' ? 'Visible' : 'Hidden'; ?></td>
+                                        <td>
+                                            <a href="editproduct.php?p_id=<?= $item['p_id']; ?>" class="btn btn-primary">Edit</a>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger delete_product_btn" value="<?= $item['p_id']; ?>">Delete</button>
+                                        </td>
+                                    </tr>
+                            <?php }
+                            } else {
+                                echo "No records found";
+                            }
+                            ?>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php include('includes/footer.php'); ?>
