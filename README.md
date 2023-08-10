@@ -1,5 +1,5 @@
 # Online Shop E-commerce System
-# Welcome to the Online Shop E-commerce System, a senior project developed using PHP, jQuery, HTML, and Bootstrap. This application is designed to facilitate the operation of an online shop that sells clothes, equipment, and other products. The system caters to three user roles: client, admin, and delivery personnel.
+Welcome to the Online Shop E-commerce System, a senior project developed using PHP, jQuery, HTML, and Bootstrap. This application is designed to facilitate the operation of an online shop that sells clothes, equipment, and other products. The system caters to three user roles: client, admin, and delivery personnel.
 
 # Features
 User Authentication:
